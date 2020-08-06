@@ -3,7 +3,7 @@ import './styles.css';
 import PageHeader from "../../components/PageHeader";
 
 function TeacherForm() {
-    const title = 'Form';
+    const title = 'Form 01';
     return (
         <div id="page-teacher-form" className="container">
             <PageHeader title={title}/>
