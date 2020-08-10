@@ -15,15 +15,29 @@ class ClassesController {
         const subject = filters.subject as string;
         const week_day = filters.week_day as string;
         const time = filters.time as string;
+        let classes;
 
         if (!week_day || !subject || !time) {
+            /*
             return response.status(400).json({
                 error: 'Missing filters to search classes'
             })
+            */
+
+            classes = await db('classes')
+                .whereExists(function () {
+                    this.select('class_schedule.*')
+                        .from('class_schedule')
+                        .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')
+                })
+                .join('users', 'classes.user_id', '=', 'users.id')
+                .select(['classes.*', 'users.*']); // Exibir todos os campos das duas tabelas
+
+            return response.json(classes);
         }
 
         const timeInMinutes = convertHourToMinutes(time);
-        const classes = await db('classes')
+        classes = await db('classes')
             .whereExists(function () {
                 this.select('class_schedule.*')
                     .from('class_schedule')

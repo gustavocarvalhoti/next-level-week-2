@@ -14,8 +14,10 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "~1.11.0",
     "@types/express": "^4.17.7",
     "cors": "^2.8.5",
+    "expo": "^38.0.9",
     "express": "^4.17.1",
     "knex": "^0.21.2",
     "sqlite3": "^5.0.0"
