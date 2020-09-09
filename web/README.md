@@ -10,13 +10,3 @@ yarn add @types/react-dom -D
 yarn add @types/react-router-dom -D
 yarn add axios
 ```
-
-## Start
-```
-
-```
-
-## General
-```
-
-```
